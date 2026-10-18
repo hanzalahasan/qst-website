@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>QST Poster</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink: #1b2a52; --ink-soft: #55628a; --crimson: #a3122e; --line: rgba(27,42,82,.2); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #eaf1fb; }
+    body { font-family: "Montserrat", sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+    .poster { position: relative; width: 100vw; height: 100vh; overflow: hidden; text-align: center; }
+    .bg { position: absolute; inset: 0; background: linear-gradient(90deg, #f3f6fb 0%, #e6eef8 50%, #c9dcf1 100%); }
+    .bg::before {
+      content: ""; position: absolute; inset: 0;
+      background: url("../assets/bg.jpg") var(--bg-pos, center 70%) / var(--bg-size, cover) no-repeat;
+      -webkit-mask-image: linear-gradient(to bottom, transparent var(--fade, 0%), #000 calc(var(--fade, 0%) + 14%));
+      mask-image: linear-gradient(to bottom, transparent var(--fade, 0%), #000 calc(var(--fade, 0%) + 14%));
+    }
+    .bg::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,.6) 0%, rgba(255,255,255,.2) 50%, rgba(255,255,255,0) 70%, rgba(255,255,255,.7) 100%);
+    }
+    .frame { position: absolute; inset: var(--inset); border: 1px solid rgba(27,42,82,.16); pointer-events: none; }
+
+    .content {
+      position: relative; height: 100%;
+      display: flex; flex-direction: column; align-items: center;
+      padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+    }
+    .logo { width: var(--logo); height: auto; display: block; }
+    .eyebrow { margin-top: calc(var(--u) * 3.2); font-size: calc(var(--u) * .95); font-weight: 500; letter-spacing: .45em; text-transform: uppercase; color: var(--ink-soft); }
+    h1 {
+      margin-top: calc(var(--u) * .6);
+      font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400;
+      font-size: calc(var(--u) * 7.4); line-height: .95; letter-spacing: -.01em;
+    }
+    .rule { width: calc(var(--u) * 3.6); height: 2px; background: var(--crimson); opacity: .75; margin: calc(var(--u) * 2.2) auto calc(var(--u) * 1.9); }
+    .event { font-size: calc(var(--u) * 1.05); font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--crimson); }
+    .date {
+      margin-top: calc(var(--u) * .7);
+      font-family: "Cormorant Garamond", serif; font-weight: 500;
+      font-size: calc(var(--u) * 2.9); line-height: 1.1; font-variant-numeric: lining-nums;
+    }
+    .spacer { flex: 1; }
+    .contact {
+      width: 100%; padding-top: calc(var(--u) * 1.5); border-top: 1px solid var(--line);
+      display: flex; flex-wrap: wrap; justify-content: center; gap: calc(var(--u) * .7) calc(var(--u) * 2.4);
+      font-size: calc(var(--u) * 1.05); font-weight: 500; letter-spacing: .04em;
+    }
+    .contact span { display: inline-flex; align-items: center; gap: calc(var(--u) * .55); white-space: nowrap; }
+    .contact svg { width: calc(var(--u) * 1.15); height: calc(var(--u) * 1.15); fill: none; stroke: var(--crimson); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .web { margin-top: calc(var(--u) * 1.1); font-size: calc(var(--u) * 1.15); font-weight: 600; letter-spacing: .32em; text-transform: uppercase; }
+
+    /* ---- formats (set by ?f=) ---- */
+    .square   { --u: 12px; --inset: 34px; --pad-top: 92px;  --pad-x: 80px; --pad-bottom: 70px;  --logo: 250px; --bg-size: 100% auto; --bg-pos: left bottom; --fade: 44%; }
+    .portrait { --u: 13px; --inset: 36px; --pad-top: 120px; --pad-x: 80px; --pad-bottom: 80px;  --logo: 280px; --bg-size: 112% auto; --bg-pos: 20% bottom; --fade: 50%; }
+    .story    { --u: 14.5px; --inset: 44px; --pad-top: 250px; --pad-x: 80px; --pad-bottom: 200px; --logo: 330px; --bg-size: 165% auto; --bg-pos: 22% bottom; --fade: 48%; }
+    .story .contact { flex-direction: column; align-items: center; gap: calc(var(--u) * 1); }
+    .story .eyebrow { margin-top: calc(var(--u) * 4.5); }
+    .wide     { --u: 8.6px; --inset: 24px; --pad-top: 44px; --pad-x: 70px; --pad-bottom: 36px; --logo: 170px; }
+    .wide .eyebrow { margin-top: calc(var(--u) * 2.4); }
+    .wide .rule { margin: calc(var(--u) * 1.6) auto calc(var(--u) * 1.4); }
+    .wide .web { display: none; }
+  </style>
+</head>
+<body>
+  <div class="poster" id="poster">
+    <div class="bg"></div>
+    <div class="frame"></div>
+    <div class="content">
+      <img class="logo" src="../assets/qst-logo.png" alt="QST Training Center">
+      <p class="eyebrow">Kathmandu · Nepal</p>
+      <h1>Coming Soon</h1>
+      <div class="rule"></div>
+      <p class="event">Grand Opening Ceremony</p>
+      <p class="date">Friday, 13 November 2026</p>
+      <div class="spacer"></div>
+      <div class="contact">
+        <span><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>+977 9740740309</span>
+        <span><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>info@qst.com.np</span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 22s-8-6.5-8-12a8 8 0 0 1 16 0c0 5.5-8 12-8 12z"/><circle cx="12" cy="10" r="3"/></svg>Gahana Pokhari, Naxal, Kathmandu</span>
+      </div>
+      <p class="web">qst.com.np</p>
+    </div>
+  </div>
+  <script>
+    document.getElementById("poster").classList.add(new URLSearchParams(location.search).get("f") || "square");
+  </script>
+</body>
+</html>
