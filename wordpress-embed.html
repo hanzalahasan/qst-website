@@ -1,0 +1,138 @@
+<!-- QST Nepal coming-soon page: paste into an Elementor "HTML" widget (or a Custom HTML block). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* everything is scoped under #qst-np so it can't affect the rest of qst.qa */
+  #qst-np {
+    --ink: #1b2a52; --ink-soft: #5a678a; --line: rgba(27, 42, 82, .18); --crimson: #a3122e;
+    position: fixed; inset: 0; z-index: 999999;
+    overflow-y: auto; overflow-x: hidden;
+    background: #eaf1fb;
+    color: var(--ink);
+    font-family: "Montserrat", system-ui, sans-serif; font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-align: center;
+  }
+  #qst-np *, #qst-np *::before, #qst-np *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  #qst-np .qst-bg {
+    position: fixed; inset: 0;
+    background: url("https://hanzalahasan.github.io/qst-website/assets/bg.jpg") center 70% / cover no-repeat;
+    animation: qstDrift 40s ease-in-out infinite alternate;
+  }
+  #qst-np .qst-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.15) 55%, rgba(255,255,255,0) 75%, rgba(255,255,255,.45) 100%);
+  }
+  @keyframes qstDrift { from { transform: scale(1); } to { transform: scale(1.06); } }
+  #qst-np .qst-page {
+    position: relative; min-height: 100vh; min-height: 100svh;
+    display: flex; flex-direction: column; align-items: center; padding: 0 16px;
+  }
+  #qst-np .qst-hero {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 8vh 0 6vh; max-width: 720px;
+  }
+  #qst-np .qst-logo { width: min(210px, 52vw); height: auto; display: block; border: 0; box-shadow: none; }
+  #qst-np .qst-eyebrow {
+    margin-top: 44px; font-size: .72rem; font-weight: 500; letter-spacing: .42em; text-transform: uppercase;
+    color: var(--ink-soft); line-height: 1.5;
+  }
+  #qst-np h1.qst-title {
+    margin-top: 10px; font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; font-weight: 400;
+    font-size: clamp(3.2rem, 11vw, 6.2rem); line-height: 1; letter-spacing: -.01em; color: var(--ink);
+    text-transform: none;
+  }
+  #qst-np .qst-rule { width: 48px; height: 1px; background: var(--crimson); margin: 30px auto 26px; opacity: .7; }
+  #qst-np .qst-event { font-size: .78rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: var(--crimson); line-height: 1.5; }
+  #qst-np .qst-date {
+    margin-top: 10px; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.5rem, 4.6vw, 2rem);
+    font-weight: 400; font-variant-numeric: lining-nums; color: var(--ink); line-height: 1.3;
+  }
+  #qst-np .qst-countdown { margin-top: 34px; display: flex; justify-content: center; align-items: flex-start; gap: clamp(18px, 5vw, 44px); }
+  #qst-np .qst-unit { min-width: 52px; }
+  #qst-np .qst-unit b {
+    display: block; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 400;
+    font-size: clamp(2rem, 7vw, 2.8rem); line-height: 1; font-variant-numeric: lining-nums tabular-nums; color: var(--ink);
+  }
+  #qst-np .qst-unit small {
+    display: block; margin-top: 8px; font-size: .62rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--ink-soft);
+  }
+  #qst-np .qst-sep { font-family: "Cormorant Garamond", serif; font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.1; color: var(--line); }
+  #qst-np .qst-launched { display: none; margin-top: 30px; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 1.6rem; }
+  #qst-np .qst-footer {
+    width: 100%; max-width: 980px; padding: 22px 0 28px; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 34px;
+    font-size: .8rem; letter-spacing: .06em;
+  }
+  #qst-np .qst-footer a { color: var(--ink); text-decoration: none; box-shadow: none; transition: color .2s; }
+  #qst-np .qst-footer a:hover { color: var(--crimson); }
+  #qst-np .qst-hero > *, #qst-np .qst-footer { opacity: 0; transform: translateY(10px); animation: qstRise 1.1s cubic-bezier(.2,.7,.2,1) forwards; }
+  #qst-np .qst-hero > :nth-child(2) { animation-delay: .15s; }
+  #qst-np .qst-hero > :nth-child(3) { animation-delay: .25s; }
+  #qst-np .qst-hero > :nth-child(4) { animation-delay: .35s; }
+  #qst-np .qst-hero > :nth-child(5) { animation-delay: .45s; }
+  #qst-np .qst-hero > :nth-child(6) { animation-delay: .55s; }
+  #qst-np .qst-hero > :nth-child(7) { animation-delay: .65s; }
+  #qst-np .qst-footer { animation-delay: .8s; }
+  @keyframes qstRise { to { opacity: 1; transform: none; } }
+  @media (max-width: 600px) {
+    #qst-np .qst-bg { background-position: 62% 70%; }
+    #qst-np .qst-eyebrow { margin-top: 34px; letter-spacing: .32em; }
+    #qst-np .qst-sep { display: none; }
+    #qst-np .qst-footer { flex-direction: column; gap: 8px; font-size: .78rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #qst-np .qst-bg, #qst-np .qst-hero > *, #qst-np .qst-footer { animation: none; opacity: 1; transform: none; }
+  }
+</style>
+
+<div id="qst-np">
+  <div class="qst-bg" aria-hidden="true"></div>
+  <div class="qst-page">
+    <main class="qst-hero">
+      <img class="qst-logo" src="https://hanzalahasan.github.io/qst-website/assets/qst-logo.png" alt="QST Training Center" width="1100" height="617">
+      <p class="qst-eyebrow">Kathmandu · Nepal</p>
+      <h1 class="qst-title">Coming Soon</h1>
+      <div class="qst-rule" aria-hidden="true"></div>
+      <p class="qst-event">Grand Opening Ceremony</p>
+      <p class="qst-date">Friday, 13 November 2026</p>
+      <div class="qst-countdown" id="qst-countdown" role="timer">
+        <div class="qst-unit"><b id="qst-d">00</b><small>Days</small></div>
+        <span class="qst-sep" aria-hidden="true">·</span>
+        <div class="qst-unit"><b id="qst-h">00</b><small>Hours</small></div>
+        <span class="qst-sep" aria-hidden="true">·</span>
+        <div class="qst-unit"><b id="qst-m">00</b><small>Min</small></div>
+        <span class="qst-sep" aria-hidden="true">·</span>
+        <div class="qst-unit"><b id="qst-s">00</b><small>Sec</small></div>
+      </div>
+      <p class="qst-launched" id="qst-launched">We are now open. Welcome.</p>
+    </main>
+    <footer class="qst-footer">
+      <a href="tel:+9779740740309">+977 9740740309</a>
+      <a href="mailto:info@qst.com.np">info@qst.com.np</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Gahana+Pokhari%2C+Naxal%2C+Kathmandu" target="_blank" rel="noopener">Gahana Pokhari, Naxal, Kathmandu</a>
+    </footer>
+  </div>
+</div>
+
+<script>
+  (function () {
+    // Opening: Friday 13 Nov 2026, start of day Nepal time (UTC+05:45)
+    var OPENING = new Date("2026-11-13T00:00:00+05:45").getTime();
+    var els = ["qst-d", "qst-h", "qst-m", "qst-s"].map(function (id) { return document.getElementById(id); });
+    function pad(n) { return String(n).padStart(2, "0"); }
+    function tick() {
+      var diff = OPENING - Date.now();
+      if (diff <= 0) {
+        document.getElementById("qst-countdown").style.display = "none";
+        document.getElementById("qst-launched").style.display = "block";
+        return;
+      }
+      [Math.floor(diff / 864e5), Math.floor(diff / 36e5) % 24, Math.floor(diff / 6e4) % 60, Math.floor(diff / 1e3) % 60]
+        .forEach(function (v, i) { els[i].textContent = pad(v); });
+      setTimeout(tick, 1000 - (Date.now() % 1000));
+    }
+    tick();
+  })();
+</script>
